@@ -1,0 +1,93 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Quiz 💘</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #ffe6e6;
+        }
+        .hidden {
+            display: none;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .btn:hover {
+            background-color: #cc0000;
+        }
+        #noButton {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Answer a Few Questions! 😍</h1>
+
+        <div id="question1">
+            <p>What is your favorite color? 🎨</p>
+            <input type="text" id="color">
+            <button class="btn" onclick="nextQuestion(2)">Next</button>
+        </div>
+
+        <div id="question2" class="hidden">
+            <p>Do you like chocolates? 🍫</p>
+            <button class="btn" onclick="nextQuestion(3)">Yes</button>
+            <button class="btn" onclick="nextQuestion(3)">No</button>
+        </div>
+
+        <div id="question3" class="hidden">
+            <p>Do you believe in love? 💕</p>
+            <button class="btn" onclick="nextQuestion(4)">Yes</button>
+            <button class="btn" onclick="nextQuestion(4)">No</button>
+        </div>
+
+        <div id="finalQuestion" class="hidden">
+            <h2>Will You Be My Valentine? ❤️</h2>
+            <button class="btn" onclick="alert('Yay! 🎉 Happy Valentine’s!')">Yes</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function nextQuestion(qNum) {
+            document.getElementById('question' + (qNum - 1)).classList.add('hidden');
+            let nextQ = document.getElementById('question' + qNum);
+            if (nextQ) {
+                nextQ.classList.remove('hidden');
+            } else {
+                document.getElementById('finalQuestion').classList.remove('hidden');
+            }
+        }
+
+        function moveButton() {
+            let btn = document.getElementById('noButton');
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
